@@ -1,1 +1,12 @@
+generation:
+  max_new_tokens: 96
+  temperature: 0.3
+  top_p: 0.9
+  do_sample: true
 
+paths:
+  truthfulqa: "data/processed/truthfulqa.csv"
+  ru_qa: "data/processed/ru_qa_mini.csv"
+
+evaluation:
+  token_f1_threshold: 0.55

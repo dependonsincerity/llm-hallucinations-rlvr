@@ -1,1 +1,11 @@
+qwen:
+  name: "Qwen/Qwen2.5-1.5B-Instruct"
+  dtype: "auto"
+  load_in_4bit: false
+  device_map: "auto"
 
+saiga:
+  name: "IlyaGusev/saiga_mistral_7b"
+  dtype: "auto"
+  load_in_4bit: true
+  device_map: "auto"

@@ -4,9 +4,11 @@ import yaml
 import re
 
 def normalize(s):
+    if s is None:
+        s = ""
+    if not isinstance(s, str):
+        s = str(s)
     s = s.lower().strip()
-    s = re.sub(r"[^\w\s\-]", "", s)
-    s = re.sub(r"\s+", " ", s)
     return s
 
 def token_f1(pred, gold):

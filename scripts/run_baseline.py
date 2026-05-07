@@ -4,6 +4,7 @@ import pandas as pd
 from tqdm import tqdm
 import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM
+from transformers import BitsAndBytesConfig
 
 def load_config():
     with open("configs/models.yaml", "r", encoding="utf-8") as f:
@@ -16,7 +17,7 @@ def load_model(model_name, load_in_4bit=False, device_map="auto"):
     tok = AutoTokenizer.from_pretrained(model_name)
     kwargs = {"device_map": device_map}
     if load_in_4bit:
-        kwargs["load_in_4bit"] = True
+        kwargs["quantization_config"] = BitsAndBytesConfig(load_in_4bit=True)
     model = AutoModelForCausalLM.from_pretrained(model_name, **kwargs)
     model.eval()
     return tok, model

@@ -28,7 +28,7 @@ def build_prompt(tokenizer, question, lang="en"):
         system = "Вы — полезный помощник. Отвечайте кратко и фактически."
     messages = [{"role": "system", "content": system},
                 {"role": "user", "content": question}]
-    if hasattr(tokenizer, "apply_chat_template"):
+    if hasattr(tokenizer, "apply_chat_template") and getattr(tokenizer, "chat_template", None):
         return tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
     return system + "\nQ: " + question + "\nA:"
 
